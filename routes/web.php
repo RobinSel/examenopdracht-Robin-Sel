@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', 'pagesController@home');
-
 Auth::routes();
+
+Route::get('/', 'pagesController@home');
