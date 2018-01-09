@@ -14,3 +14,4 @@
 Auth::routes();
 
 Route::get('/', 'pagesController@home');
+Route::get('/intructies', 'pagesController@intructies');
