@@ -8,27 +8,36 @@
         <title>Laravel</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
         <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
-              <div class="navigatie">
-                <a href="#">Home</a>
-                <a href="#">Instructies</a>
-              </div>
+        <div class="page">
+          <div class="header">
+            <div class="navigationLeft">
+              <ul>
+                <li><a href="{{ url('/') }}">Hackernews.local</a></li>
+                <li><a href="{{ url('/home') }}">Home</a></li>
+                <li><a href="{{ url('/intructies') }}">Instructies</a></li>
+              </ul>
+            </div>
+            <div class="navigationRight">
+              <ul>
+              @if (Route::has('login'))
+                      @auth
+                        <li><a href="{{ url('/home') }}">Home</a></li>
+                      @else
+                          <li><a href="{{ route('login') }}">Login</a></li>
+                          <li><a href="{{ route('register') }}">Register</a></li>
+                      @endauth
+              @endif
+              </ul>
+            </div>
+          </div>
+          <div class="content">
             @yield('content')
+          </div>
 
         </div>
     </body>
