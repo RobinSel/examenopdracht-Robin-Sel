@@ -23,7 +23,10 @@
                     @endauth
                 </div>
             @endif
-
+              <div class="navigatie">
+                <a href="#">Home</a>
+                <a href="#">Instructies</a>
+              </div>
             @yield('content')
 
         </div>
