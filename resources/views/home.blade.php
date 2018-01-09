@@ -1,5 +1,10 @@
 @extends('layout')
 
 @section('content')
-    <p>Welcome tot he homepage</p>
+<div class="contentHeader">
+  <p>Article overview</p>
+</div>
+<div class="contentCont">
+
+</div>
 @stop
