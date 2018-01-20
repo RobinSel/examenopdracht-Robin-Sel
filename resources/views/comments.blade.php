@@ -3,6 +3,13 @@
 @section('content')
 <a href="{{ url('/')}}">Back to overview</a>
 <div class="contentborder">
+  @if ($deleteSure == True)
+  <div class="AreYouSure">
+    <p>Are you sure to delete this comment</p>
+    <a href="comments/{{$id}}/delete/{{$comId}}/sure">Yes</a>
+    <a href="#">No</a>
+  </div>
+  @endif
   <div class="contentHeader">
     <p>Article: {{$article[0]->title}}</p>
   </div>
@@ -28,15 +35,15 @@
           <p>{{$comment->body}}</p>
           <div class="CommentInfo">
             <p>Posted by {{$comment->name}} on {{$comment->created_at}}</p>
-            <a href="#">Edit</a>
-            <a href="./{{ $article[0]->id }}/delete/{{$comment->id}}">Delete</a>
+            <a href="./{{$id}}/edit/{{$comment->id}}">Edit</a>
+            <a href="./{{$id}}/delete/{{$comment->id}}">Delete</a>
           </div>
         </li>
         @endforeach
       </ul>
     </div>
     <div class="addComment">
-      <form action="./{{ $article[0]->id }}/store" method="post">
+      <form action="./{{$id}}/store" method="post">
         <label for="body">Comment</label>
         <textarea name="body" rows="2" cols="80"></textarea><br>
 

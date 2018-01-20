@@ -22,4 +22,9 @@ Route::get('/comments/{id}', 'PagesController@comments');
 
 Route::post('article/store', 'ArticleController@store');
 Route::post('comments/{id}/store', 'ArticleController@storeComment');
+
 Route::post('comments/{id}/delete/{commentId}', 'ArticleController@deleteComment');
+Route::post('comments/{id}/delete/{commentId}/sure', 'ArticleController@deleteSureComment');
+
+Route::get('comments/{id}/edit/{commentId}', 'ArticleController@editComment');
+Route::patch('comments/{id}/update/{commentId}', 'ArticleController@updateComment');

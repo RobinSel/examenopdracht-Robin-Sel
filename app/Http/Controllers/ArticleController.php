@@ -38,19 +38,48 @@ class ArticleController extends Controller
 
       $comments = Comment::where('article_id', $id)->get();
 
+
       return redirect()->action('PagesController@comments', ['id' => $id]);
 
     }
-    public function deleteComment ($id, Request $request) {
 
+    public function editComment ($id, $comId) {
 
-      $article = Article::find($id, $comid);
+      $comment = Comment::where('comments.id', $comId)->get();
 
-      $comments = Comment::where('article_id', $id)->get();
+      $articleId = $id;
 
-      
+      return view('editComment', compact('comment', 'articleId'));
 
-      return redirect()->action('PagesController@comments', ['id' => $id]);
+    }
+
+    public function updateComment ($id, $comId, Request $request) {
+
+      $commentToEdit = Comment::where('id', $comId)->update(['body' => $request->body]);
+
+      return back();
+
+    }
+
+    public function deleteComment ($id, $comId, Request $request) {
+
+      $article = Article::find($id)->join('users', 'users.id', '=', 'articles.user_id')->select('articles.*', 'users.name')->get();;
+
+      $comments = Comment::where('article_id', $id)->join('articles', 'comments.article_id', '=', 'articles.id')->join('users', 'users.id', '=', 'articles.user_id')->select('articles.*', 'comments.*', 'users.name')->orderby('comments.id', 'desc')->get();
+
+      $countCom = count($comments);
+
+      $id=$id;
+      $comId=$comId;
+      $deleteSure = True;
+
+      return view('comments', compact('article', 'comments', 'countCom', 'id', 'deleteSure', 'comId'));
+
+    }
+
+    public function deleteSureComment ($id, Request $request) {
+
+      dd('hit');
 
     }
 }

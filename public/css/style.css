@@ -122,9 +122,11 @@
 }
 .CommentInfo a {
 padding: 5px;
-border: 2px solid #777;
+border: 1px solid #eee;
+color: #fff;
+text-decoration: none;
 }
-.CommentInfo a:first-child {
+.CommentInfo a:nth-child(2) {
   background-color: #4286f4;
 }
 .CommentInfo a:last-child {

@@ -31,6 +31,9 @@ class PagesController extends Controller
 
         $countCom = count($comments);
 
-        return view('comments', compact('article', 'comments', 'countCom'));
+        $id=$id;
+        $deleteSure = False;
+
+        return view('comments', compact('article', 'comments', 'countCom', 'id', 'deleteSure'));
     }
 }
