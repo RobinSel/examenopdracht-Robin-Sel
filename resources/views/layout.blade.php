@@ -19,6 +19,7 @@
               <ul>
                 <li><a href="{{ url('/') }}">Hackernews.local</a></li>
                 <li><a href="{{ url('/home') }}">Home</a></li>
+                <li><a href="{{ url('/article/add') }}">Add article</a></li>
                 <li><a href="{{ url('/intructies') }}">Instructies</a></li>
               </ul>
             </div>

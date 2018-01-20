@@ -48,9 +48,12 @@
 .content {
   max-width: 70%;
   margin: auto;
+}
+.contentborder{
   border: 1px solid #ddd;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
+  margin-top: 20px;
 }
 .contentHeader {
   background-color: #f5f5f5;
@@ -61,6 +64,88 @@
 .contentCont {
   padding: 2%;
 }
+/*****************************************************************
+          CONTENT - HOME
+*****************************************************************/
+.article {
+  display: flex;
+  margin-bottom: 30px;
+}
+.article a {
+  color: #4286f4;
+  font-weight: normal;
+  border: none;
+  margin-bottom: 10px;
+  text-decoration: none;
+  font-size: 2em;
+}
+.article a:hover {
+  color: #6841f4;
+}
+.article .extraInfo p {
+  font-size: 0.75em;
+  float: left;
+  border-right: 1px solid #aaa;
+  padding: 0 5px;
+  margin: 0;
+}
+.article .extraInfo p a {
+  font-size: 0.85em;
+}
+.article .extraInfo p:last-child {
+  border: none;
+}
+.article .rate {
+  margin: auto 2%;;
+}
+/*****************************************************************
+          CONTENT - COMMENTS
+*****************************************************************/
+.allComments {
+  margin-left: 7%;
+}
+.allComments li {
+  margin-bottom: 30px;
+}
+.allComments ul li > p {
+  margin-bottom: 10px;
+}
+.CommentInfo {
+  font-size: 0.65em;
+  border-top: 1px solid #eee;
+}
+.CommentInfo p {
+  margin-top: 0;
+}
+.addComment form {
+  margin-top: 70px;
+}
+
+/*****************************************************************
+          CONTENT - FORM
+*****************************************************************/
+form label {
+  margin-left: 5%;
+  margin-right: 5%;
+  font-weight: bold;
+}
+form input,
+form textarea {
+  width: 60%;
+  margin-bottom: 20px;
+}
+form input[type=submit] {
+  width: 20%;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  height: 30px;
+  border: 1px solid #ccc;
+}
+form input[type=submit]:hover {
+  background-color: #ccc;
+}
+
 
 
 /*****************************************************************

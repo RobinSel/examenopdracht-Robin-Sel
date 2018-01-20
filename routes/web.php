@@ -13,6 +13,13 @@
 
 Auth::routes();
 
-Route::get('/', 'pagesController@home');
-Route::get('/home', 'pagesController@home');
-Route::get('/intructies', 'pagesController@intructies');
+Route::get('/', 'PagesController@home');
+Route::get('/home', 'PagesController@home');
+Route::get('/intructies', 'PagesController@intructies');
+Route::get('/article/add', 'PagesController@addarticle');
+
+Route::get('/comments/{id}', 'PagesController@comments');
+
+Route::post('article/store', 'ArticleController@store');
+Route::post('comments/{id}/store', 'ArticleController@storeComment');
+Route::post('comments/{id}/delete/{commentId}', 'ArticleController@deleteComment');
