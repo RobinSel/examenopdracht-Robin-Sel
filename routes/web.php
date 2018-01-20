@@ -15,7 +15,6 @@ Auth::routes();
 
 Route::get('/', 'PagesController@home');
 Route::get('/home', 'PagesController@home');
-Route::get('/intructies', 'PagesController@intructies');
 Route::get('/article/add', 'PagesController@addarticle');
 
 Route::get('/comments/{id}', 'PagesController@comments');
