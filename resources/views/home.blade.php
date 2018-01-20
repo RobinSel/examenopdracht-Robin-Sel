@@ -17,7 +17,7 @@
             <a href={{$article->url}}>{{$article->title}}</a>
             <div class="extraInfo">
               <p>{{$article->points}} points</p>
-              <p>Ceated by {{$user->name}}</p>
+              <p>Ceated by {{$article->name}}</p>
               <p><a href="./comments/{{ $article->id }}">... Comments</a></p>
             </div>
           </div>

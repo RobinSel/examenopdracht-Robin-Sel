@@ -4,7 +4,7 @@
 <a href="{{ url('/')}}">Back to overview</a>
 <div class="contentborder">
   <div class="contentHeader">
-    <p>Article: (name)</p>
+    <p>Article: {{$article[0]->title}}</p>
   </div>
   <div class="contentCont">
     <div class="article">
@@ -13,11 +13,11 @@
         <img src="images/icon-desc.png" alt="">
       </div>
       <div class="articleInfo">
-        <a href={{$article->url}}>{{$article->title}}</a>
+        <a href={{$article[0]->url}}>{{$article[0]->title}}</a>
         <div class="extraInfo">
-          <p>{{$article->points}} points</p>
-          <p>Ceated by {{$article->user_id}}</p>
-          <p>... Comments</p>
+          <p>{{$article[0]->points}} points</p>
+          <p>Ceated by {{$article[0]->name}}</p>
+          <p>{{$countCom}} Comment(s)</p>
         </div>
       </div>
     </div>
@@ -27,16 +27,16 @@
         <li>
           <p>{{$comment->body}}</p>
           <div class="CommentInfo">
-            <p>Posted by {{$comment->user_id}} on {{$comment->created_at}}</p>
+            <p>Posted by {{$comment->name}} on {{$comment->created_at}}</p>
             <a href="#">Edit</a>
-            <a href="./{{ $article->id }}/delete/{{$comment->id}}">Delete</a>
+            <a href="./{{ $article[0]->id }}/delete/{{$comment->id}}">Delete</a>
           </div>
         </li>
         @endforeach
       </ul>
     </div>
     <div class="addComment">
-      <form action="./{{ $article->id }}/store" method="post">
+      <form action="./{{ $article[0]->id }}/store" method="post">
         <label for="body">Comment</label>
         <textarea name="body" rows="2" cols="80"></textarea><br>
 
