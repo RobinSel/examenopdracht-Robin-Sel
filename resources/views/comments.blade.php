@@ -5,7 +5,7 @@
 @if ($deleteSure == 1)
 <div class="AreYouSure">
   <p>Are you sure to delete this comment</p>
-  <a href="{{ route('deleteCommentSure', [$id, $comments[0]->id]) }}">Yes</a>
+  <a href="{{ route('deleteCommentSure', [$id, $comId]) }}">Yes</a>
   <a href="{{ route('comments', [$id]) }}">No</a>
 </div>
 @endif
@@ -46,8 +46,8 @@
           <div class="CommentInfo">
             <p>Posted by {{$comment->name}} on {{$comment->created_at}}</p>
             @if ($userId == ($comment->user_id))
-            <a href="{{ route('editComment', [$id, $comments[0]->id]) }}">Edit</a>
-            <a href="{{ route('deleteComment', [$id, $comments[0]->id]) }}">Delete</a>
+            <a href="{{ route('editComment', [$id, $comment->id]) }}">Edit</a>
+            <a href="{{ route('deleteComment', [$id, $comment->id]) }}">Delete</a>
             @endif
           </div>
         </li>

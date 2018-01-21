@@ -101,6 +101,17 @@
 .article .rate {
   margin: auto 2%;;
 }
+.extraInfo > a {
+  font-size: 0.7em;
+  padding: 1%;
+  border: 1px solid #eee;
+  background-color: #4286f4;
+  color: #fff;
+}
+.extraInfo > a:hover {
+  color: #000;
+  background-color: #aaa;
+}
 /*****************************************************************
           CONTENT - COMMENTS
 *****************************************************************/
@@ -136,6 +147,11 @@ text-decoration: none;
 .contentHeader a,
 .CommentInfo a:last-child {
   background-color: #ff4d4d;
+}
+.contentHeader a:hover,
+.CommentInfo a:hover {
+  color: #000;
+  background-color: #aaa;
 }
 .contentHeader {
   display: flex;

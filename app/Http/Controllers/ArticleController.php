@@ -117,7 +117,7 @@ class ArticleController extends Controller
         return back();
       }
 
-      $article = Article::find($id)->join('users', 'users.id', '=', 'articles.user_id')->select('articles.*', 'users.name')->get();
+      $article = Article::where('articles.id', $id)->join('users', 'users.id', '=', 'articles.user_id')->select('articles.*', 'users.name')->get();
 
       $comments = Comment::where('article_id', $id)->join('articles', 'comments.article_id', '=', 'articles.id')->join('users', 'users.id', '=', 'articles.user_id')->select('articles.*', 'comments.*', 'users.name')->orderby('comments.id', 'desc')->get();
 
@@ -148,7 +148,7 @@ class ArticleController extends Controller
         return back();
       }
 
-      $article = Article::find($id)->join('users', 'users.id', '=', 'articles.user_id')->select('articles.*', 'users.name')->get();
+      $article = Article::where('articles.id', $id)->join('users', 'users.id', '=', 'articles.user_id')->select('articles.*', 'users.name')->get();
 
       $comments = Comment::where('article_id', $id)->join('articles', 'comments.article_id', '=', 'articles.id')->join('users', 'users.id', '=', 'articles.user_id')->select('articles.*', 'comments.*', 'users.name')->orderby('comments.id', 'desc')->get();
 
