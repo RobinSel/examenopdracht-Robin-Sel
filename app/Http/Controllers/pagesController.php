@@ -20,10 +20,22 @@ class PagesController extends Controller
     }
 
     public function addarticle () {
-        return view('addArticle');
+        if (\Auth::check()) {
+            return view('addArticle');
+        }
+        else {
+          return redirect('/');
+        }
     }
 
     public function comments ($id) {
+
+        if (\Auth::check()) {
+          $userId = \Auth::user()->id;
+        }
+        else {
+          $userId = 0;
+        }
 
         $article = Article::where('articles.id', $id)->join('users', 'users.id', '=', 'articles.user_id')->select('articles.*', 'users.name')->get();;
 
@@ -34,6 +46,6 @@ class PagesController extends Controller
         $id=$id;
         $deleteSure = False;
 
-        return view('comments', compact('article', 'comments', 'countCom', 'id', 'deleteSure'));
+        return view('comments', compact('article', 'comments', 'countCom', 'id', 'deleteSure', 'userId'));
     }
 }

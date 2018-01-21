@@ -12,6 +12,9 @@
   @endif
   <div class="contentHeader">
     <p>Article: {{$article[0]->title}}</p>
+    @if ($userId == ($article[0]->user_id))
+    <a href="#">Delete this article</a>
+    @endif
   </div>
   <div class="contentCont">
     <div class="article">
@@ -35,14 +38,19 @@
           <p>{{$comment->body}}</p>
           <div class="CommentInfo">
             <p>Posted by {{$comment->name}} on {{$comment->created_at}}</p>
+            @if ($userId == ($comment->user_id))
             <a href="./{{$id}}/edit/{{$comment->id}}">Edit</a>
             <a href="./{{$id}}/delete/{{$comment->id}}">Delete</a>
+            @endif
           </div>
         </li>
         @endforeach
       </ul>
     </div>
     <div class="addComment">
+      @guest
+      <p>Login to add a comment</p>
+      @else
       <form action="./{{$id}}/store" method="post">
         <label for="body">Comment</label>
         <textarea name="body" rows="2" cols="80"></textarea><br>
@@ -50,6 +58,7 @@
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <input type="submit" name="submit" value="+ Add comment">
       </form>
+      @endguest
     </div>
   </div>
 </div>

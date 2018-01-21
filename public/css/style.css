@@ -123,6 +123,7 @@
 .addComment form {
   margin-top: 70px;
 }
+.contentHeader a,
 .CommentInfo a {
 padding: 5px;
 border: 1px solid #eee;
@@ -132,8 +133,17 @@ text-decoration: none;
 .CommentInfo a:nth-child(2) {
   background-color: #4286f4;
 }
+.contentHeader a,
 .CommentInfo a:last-child {
   background-color: #f00;
+}
+.contentHeader {
+  display: flex;
+}
+.contentHeader a {
+  height: 50%;
+  margin-left: 65%;
+  margin-top: 10px;
 }
 
 /*****************************************************************

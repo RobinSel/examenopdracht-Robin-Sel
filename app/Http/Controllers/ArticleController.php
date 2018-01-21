@@ -5,16 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Article;
 use App\Comment;
+use App\Http\Controllers\Auth;
 
 class ArticleController extends Controller
 {
     public function store (Request $request) {
 
+      $userId = \Auth::user()->id;
+
       $article = new Article;
 
       $article->title = $request->title;
       $article->url = $request->url;
-      $article->user_id = 1;
+      $article->user_id = $userId;
       $article->points = 0;
 
       $article->save();
@@ -26,9 +29,11 @@ class ArticleController extends Controller
 
     public function storeComment ($id, Request $request) {
 
+      $userId = \Auth::user()->id;
+
       $comment = new Comment;
 
-      $comment->user_id = 1;
+      $comment->user_id = $userId;
       $comment->article_id = $id;
       $comment->body = $request->body;
 
