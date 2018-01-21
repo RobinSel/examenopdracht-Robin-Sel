@@ -58,10 +58,9 @@ class ArticleController extends Controller
       $commentToEdit = Comment::where('id', $comId)->update(['body' => $request->body]);
 
       return back();
-
     }
 
-    public function deleteComment ($id, $comId, Request $request) {
+    public function deleteComment ($id, $comId) {
 
       $article = Article::find($id)->join('users', 'users.id', '=', 'articles.user_id')->select('articles.*', 'users.name')->get();;
 
@@ -73,13 +72,13 @@ class ArticleController extends Controller
       $comId=$comId;
       $deleteSure = True;
 
-      return view('comments', compact('article', 'comments', 'countCom', 'id', 'deleteSure', 'comId'));
+      return view('comments', compact('article', 'comments', 'countCom', 'id', 'comId', 'deleteSure'));
 
     }
 
     public function deleteSureComment ($id, Request $request) {
 
-      dd('hit');
+      return 'deleting this comment ...';
 
     }
 }

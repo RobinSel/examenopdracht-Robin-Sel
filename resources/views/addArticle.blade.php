@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.layout')
 
 @section('content')
 <a href="{{ url('/')}}">Back to overview</a>

@@ -23,6 +23,9 @@
 .header .navigationRight {
   margin-right: 10%;
 }
+.header .navigationRight .logout a:last-child {
+  margin-left: 5%;
+}
 .header .navigationLeft ul li:first-child a {
   font-size: 1.25em;
 }
