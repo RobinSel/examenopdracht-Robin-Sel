@@ -200,11 +200,11 @@ form label {
 form input,
 form textarea {
   width: 60%;
-  margin-bottom: 20px;
 }
 form input[type=submit] {
   width: 20%;
   margin-bottom: 20px;
+  margin-top: 20px;
   background-color: #fff;
   border-radius: 5px;
   height: 30px;

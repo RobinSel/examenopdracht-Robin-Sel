@@ -16,7 +16,6 @@ Auth::routes();
 Route::get('/', 'PagesController@home')->name('home');
 Route::get('/home', 'PagesController@home')->name('home');
 Route::get('/article/add', 'PagesController@addarticle')->name('addArticle');
-
 Route::get('/comments/{id}', 'PagesController@comments')->name('comments');
 
 Route::post('article/store', 'ArticleController@store')->name('storeArticle');
@@ -25,14 +24,14 @@ Route::post('comments/{id}/store', 'ArticleController@storeComment')->name('stor
 Route::get('home/{id}/edit', 'ArticleController@editArticle')->name('editArticle');
 Route::patch('home/{id}/update', 'ArticleController@updateArticle')->name('updateArticle');
 
-Route::get('comments/{id}/delete/{commentId}', 'ArticleController@deleteComment')->name('deleteComment');
-Route::get('comments/{id}/delete/{commentId}/sure', 'ArticleController@deleteSureComment')->name('deleteCommentSure');
+Route::get('comments/{id}/edit/{commentId}', 'ArticleController@editComment')->name('editComment');
+Route::patch('comments/{id}/update/{commentId}', 'ArticleController@updateComment')->name('updateComment');
 
 Route::get('comments/{id}/delete', 'ArticleController@deleteArticle')->name('deleteArticle');
 Route::get('comments/{id}/delete/sure', 'ArticleController@deleteSureArticle')->name('deleteArticleSure');
 
-Route::get('comments/{id}/edit/{commentId}', 'ArticleController@editComment')->name('editComment');
-Route::patch('comments/{id}/update/{commentId}', 'ArticleController@updateComment')->name('updateComment');
+Route::get('comments/{id}/delete/{commentId}', 'ArticleController@deleteComment')->name('deleteComment');
+Route::get('comments/{id}/delete/{commentId}/sure', 'ArticleController@deleteSureComment')->name('deleteCommentSure');
 
 Route::get('home/{id}/rateUp', 'ArticleController@rateUp')->name('rateUp');
 Route::get('home/{id}/rateDown', 'ArticleController@rateDown')->name('rateDown');
