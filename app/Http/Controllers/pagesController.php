@@ -24,7 +24,7 @@ class PagesController extends Controller
             return view('addArticle');
         }
         else {
-          return redirect('/');
+          return back();
         }
     }
 

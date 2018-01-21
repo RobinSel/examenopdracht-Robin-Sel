@@ -50,11 +50,16 @@ class ArticleController extends Controller
 
     public function editComment ($id, $comId) {
 
-      $comment = Comment::where('comments.id', $comId)->get();
+      if (\Auth::check()) {
+        $comment = Comment::where('comments.id', $comId)->get();
 
-      $articleId = $id;
+        $articleId = $id;
 
-      return view('editComment', compact('comment', 'articleId'));
+        return view('editComment', compact('comment', 'articleId'));
+      }
+      else {
+        return back();
+      }
 
     }
 
