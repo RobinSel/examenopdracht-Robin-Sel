@@ -1,13 +1,13 @@
 @extends('layouts.layout')
 
 @section('content')
-<a href="{{ url('/')}}">Back to overview</a>
+<a href="{{ route('home') }}">Back to overview</a>
 <div class="contentborder">
   <div class="contentHeader">
     <p>Add article</p>
   </div>
   <div class="contentCont">
-    <form action="./store" method="post">
+    <form action="{{ route('storeArticle') }}" method="post">
       <label for="title">Title</label>
       <input type="text" name="title"><br>
 

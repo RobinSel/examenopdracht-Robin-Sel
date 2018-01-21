@@ -2,18 +2,25 @@
 
 @section('content')
 <a href="{{ url('/')}}">Back to overview</a>
+@if ($deleteSure == 1)
+<div class="AreYouSure">
+  <p>Are you sure to delete this comment</p>
+  <a href="{{ route('deleteCommentSure', [$id, $comments[0]->id]) }}">Yes</a>
+  <a href="{{ route('comments', [$id]) }}">No</a>
+</div>
+@endif
+@if ($deleteSureA == 1)
+<div class="AreYouSure">
+  <p>Are you sure to delete this article</p>
+  <a href="{{ route('deleteArticleSure', [$id]) }}">Yes</a>
+  <a href="{{ route('comments', [$id]) }}">No</a>
+</div>
+@endif
 <div class="contentborder">
-  @if ($deleteSure == 1)
-  <div class="AreYouSure">
-    <p>Are you sure to delete this comment</p>
-    <a href="comments/{{$id}}/delete/{{$comId}}/sure">Yes</a>
-    <a href="comments/{{$id}}">No</a>
-  </div>
-  @endif
   <div class="contentHeader">
     <p>Article: {{$article[0]->title}}</p>
     @if ($userId == ($article[0]->user_id))
-    <a href="#">Delete this article</a>
+    <a href="{{ route('deleteArticle', [$id]) }}">Delete this article</a>
     @endif
   </div>
   <div class="contentCont">
@@ -39,8 +46,8 @@
           <div class="CommentInfo">
             <p>Posted by {{$comment->name}} on {{$comment->created_at}}</p>
             @if ($userId == ($comment->user_id))
-            <a href="./{{$id}}/edit/{{$comment->id}}">Edit</a>
-            <a href="./{{$id}}/delete/{{$comment->id}}">Delete</a>
+            <a href="{{ route('editComment', [$id, $comments[0]->id]) }}">Edit</a>
+            <a href="{{ route('deleteComment', [$id, $comments[0]->id]) }}">Delete</a>
             @endif
           </div>
         </li>
@@ -51,7 +58,7 @@
       @guest
       <p>Login to add a comment</p>
       @else
-      <form action="./{{$id}}/store" method="post">
+      <form action="{{ route('storeComment', [$id])}}" method="post">
         <label for="body">Comment</label>
         <textarea name="body" rows="2" cols="80"></textarea><br>
 

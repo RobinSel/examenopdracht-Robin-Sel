@@ -79,10 +79,17 @@ class ArticleController extends Controller
 
       return back();
     }
-
+//----------------------------------------------------------------------------------------------------------------
     public function deleteComment ($id, $comId) {
 
-      $article = Article::find($id)->join('users', 'users.id', '=', 'articles.user_id')->select('articles.*', 'users.name')->get();;
+      if (\Auth::check()) {
+        $userId = \Auth::user()->id;
+      }
+      else {
+        return back();
+      }
+
+      $article = Article::find($id)->join('users', 'users.id', '=', 'articles.user_id')->select('articles.*', 'users.name')->get();
 
       $comments = Comment::where('article_id', $id)->join('articles', 'comments.article_id', '=', 'articles.id')->join('users', 'users.id', '=', 'articles.user_id')->select('articles.*', 'comments.*', 'users.name')->orderby('comments.id', 'desc')->get();
 
@@ -91,14 +98,47 @@ class ArticleController extends Controller
       $id=$id;
       $comId=$comId;
       $deleteSure = 1;
+      $deleteSureA = 0;
 
-      return view('comments', compact('article', 'comments', 'countCom', 'id', 'comId', 'deleteSure'));
+      return view('comments', compact('article', 'comments', 'countCom', 'id', 'comId', 'deleteSure', 'userId', 'deleteSureA'));
 
     }
 
-    public function deleteSureComment ($id, Request $request) {
+    public function deleteSureComment ($id, $comId) {
 
-      return 'deleting this comment ...';
+      $comment = Comment::where('id', $comId)->delete();
 
+      return redirect()->action('PagesController@comments', ['id' => $id]);
+    }
+//----------------------------------------------------------------------------------------------------------------
+    public function deleteArticle ($id) {
+
+      if (\Auth::check()) {
+        $userId = \Auth::user()->id;
+      }
+      else {
+        return back();
+      }
+
+      $article = Article::find($id)->join('users', 'users.id', '=', 'articles.user_id')->select('articles.*', 'users.name')->get();
+
+      $comments = Comment::where('article_id', $id)->join('articles', 'comments.article_id', '=', 'articles.id')->join('users', 'users.id', '=', 'articles.user_id')->select('articles.*', 'comments.*', 'users.name')->orderby('comments.id', 'desc')->get();
+
+      $countCom = count($comments);
+
+      $id=$id;
+      $deleteSure = 0;
+      $deleteSureA = 1;
+
+      return view('comments', compact('article', 'comments', 'countCom', 'id', 'deleteSure', 'userId', 'deleteSureA'));
+
+    }
+
+    public function deleteSureArticle ($id) {
+
+      $comments = Comment::where('article_id', $id)->delete();
+      $article = Article::where('id', $id)->delete();
+
+      return redirect()->action('PagesController@home');
     }
 }

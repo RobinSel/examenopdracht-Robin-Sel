@@ -17,12 +17,12 @@
           <div class="header">
             <div class="navigationLeft">
               <ul>
-                <li><a href="{{ url('/') }}">Hackernews.local</a></li>
-                <li><a href="{{ url('/') }}">Home</a></li>
+                <li><a href="{{ route('home') }}">Hackernews.local</a></li>
+                <li><a href="{{ route('home') }}">Home</a></li>
                 @guest
                 <li>Login to add an article</li>
                 @else
-                <li><a href="{{ url('/article/add') }}">Add article</a></li>
+                <li><a href="{{ route('addArticle') }}">Add article</a></li>
                 @endguest
               </ul>
             </div>

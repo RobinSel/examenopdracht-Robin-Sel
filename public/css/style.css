@@ -135,7 +135,7 @@ text-decoration: none;
 }
 .contentHeader a,
 .CommentInfo a:last-child {
-  background-color: #f00;
+  background-color: #ff4d4d;
 }
 .contentHeader {
   display: flex;
@@ -144,6 +144,33 @@ text-decoration: none;
   height: 50%;
   margin-left: 65%;
   margin-top: 10px;
+}
+.AreYouSure {
+  margin-top: 20px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  background-color: #eee;
+  display: flex;
+}
+.AreYouSure a {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left: 5%;
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid #777;
+  padding: 2%;
+}
+.AreYouSure a:nth-child(2) {
+  margin-left: 50%;
+  background-color: #ff4d4d;
+}
+.AreYouSure a:last-child {
+  color: #000;
+}
+.AreYouSure a:hover {
+  background-color: #ccc;
+  color: #000;
 }
 
 /*****************************************************************
