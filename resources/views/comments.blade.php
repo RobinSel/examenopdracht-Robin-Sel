@@ -3,11 +3,11 @@
 @section('content')
 <a href="{{ url('/')}}">Back to overview</a>
 <div class="contentborder">
-  @if ($deleteSure == True)
+  @if ($deleteSure == 1)
   <div class="AreYouSure">
     <p>Are you sure to delete this comment</p>
     <a href="comments/{{$id}}/delete/{{$comId}}/sure">Yes</a>
-    <a href="#">No</a>
+    <a href="comments/{{$id}}">No</a>
   </div>
   @endif
   <div class="contentHeader">

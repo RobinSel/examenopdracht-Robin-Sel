@@ -90,7 +90,7 @@ class ArticleController extends Controller
 
       $id=$id;
       $comId=$comId;
-      $deleteSure = True;
+      $deleteSure = 1;
 
       return view('comments', compact('article', 'comments', 'countCom', 'id', 'comId', 'deleteSure'));
 
