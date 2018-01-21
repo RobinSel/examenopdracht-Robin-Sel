@@ -47,7 +47,35 @@ class ArticleController extends Controller
       return redirect()->action('PagesController@comments', ['id' => $id]);
 
     }
+//----------------------------------------------------------------------------------------------------------------
+    public function editArticle($id) {
+      if (\Auth::check()) {
+        $userId = \Auth::user()->id;
 
+        $article = Article::where('articles.id', $id)->get();
+
+        if ($userId == ($article[0]->user_id)){
+        $id=$id;
+
+        return view('editArticle', compact('article', 'id'));
+        }
+        else {
+          return back();
+        }
+      }
+      else {
+        return back();
+      }
+    }
+
+    public function updateArticle ($id, Request $request) {
+
+      $articleToEdit = Article::where('id', $id)->update(['title' => $request->title, 'url' => $request->url]);
+
+      return back();
+    }
+
+//----------------------------------------------------------------------------------------------------------------
     public function editComment ($id, $comId) {
 
       if (\Auth::check()) {

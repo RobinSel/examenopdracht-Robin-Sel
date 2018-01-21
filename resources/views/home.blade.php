@@ -19,6 +19,7 @@
               <p>{{$article->points}} points</p>
               <p>Ceated by {{$article->name}}</p>
               <p><a href="{{ route('comments', [$article->id]) }}">... Comments</a></p>
+              <a href="{{ route('editArticle', [$article->id]) }}">Edit</a>
             </div>
           </div>
         </div>

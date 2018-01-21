@@ -22,6 +22,9 @@ Route::get('/comments/{id}', 'PagesController@comments')->name('comments');
 Route::post('article/store', 'ArticleController@store')->name('storeArticle');
 Route::post('comments/{id}/store', 'ArticleController@storeComment')->name('storeComment');
 
+Route::get('home/{id}/edit', 'ArticleController@editArticle')->name('editArticle');
+Route::patch('home/{id}/update', 'ArticleController@updateArticle')->name('updateArticle');
+
 Route::get('comments/{id}/delete/{commentId}', 'ArticleController@deleteComment')->name('deleteComment');
 Route::get('comments/{id}/delete/{commentId}/sure', 'ArticleController@deleteSureComment')->name('deleteCommentSure');
 
