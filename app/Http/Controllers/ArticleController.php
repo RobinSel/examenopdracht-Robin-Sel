@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Article;
 use App\Comment;
+use App\Rate;
 use App\Http\Controllers\Auth;
 
 class ArticleController extends Controller
@@ -168,5 +169,77 @@ class ArticleController extends Controller
       $article = Article::where('id', $id)->delete();
 
       return redirect()->action('PagesController@home');
+    }
+
+    //----------------------------------------------------------------------------------------------------------------
+    public function rateUp ($id) {
+
+      if (\Auth::check()) {
+        $userId = \Auth::user()->id;
+        $extraPoint = 0;
+        if (Rate::where('user_id', $userId)->where('article_id', $id)->where('upDown', 1)->exists()) {
+          return back();
+        }
+        else {
+          if (Rate::where('user_id', $userId)->where('article_id', $id)->where('upDown', 0)->exists()) {
+            $rateDelete = Rate::where('user_id', $userId)->delete();
+
+            $extraPoint = 1;
+          }
+          $rateUp = new Rate;
+
+          $rateUp->user_id = $userId;
+          $rateUp->article_id = $id;
+          $rateUp->upDown = 1;
+
+          $rateUp->save();
+          //----------------
+          $article = Article::where('id', $id)->get();
+          $currentPoint = $article[0]->points;
+          $newPoint = $currentPoint + 1 + $extraPoint;
+          $articleUpdate = Article::where('id', $id)->update(['points' => $newPoint]);
+
+          return redirect()->action('PagesController@home');
+        }
+
+      }
+      else {
+        return back();
+      }
+
+    }
+    public function rateDown ($id) {
+      if (\Auth::check()) {
+        $userId = \Auth::user()->id;
+        $extraPoint = 0;
+        if (Rate::where('user_id', $userId)->where('article_id', $id)->where('upDown', 0)->exists()) {
+          return back();
+        }
+        else {
+          if (Rate::where('user_id', $userId)->where('article_id', $id)->where('upDown', 1)->exists()) {
+            $rateDelete = Rate::where('user_id', $userId)->delete();
+
+            $extraPoint = 1;
+          }
+          $rateDown = new Rate;
+
+          $rateDown->user_id = $userId;
+          $rateDown->article_id = $id;
+          $rateDown->upDown = 0;
+
+          $rateDown->save();
+          //----------------
+          $article = Article::where('id', $id)->get();
+          $currentPoint = $article[0]->points;
+          $newPoint = $currentPoint - 1 - $extraPoint;
+          $articleUpdate = Article::where('id', $id)->update(['points' => $newPoint]);
+
+          return redirect()->action('PagesController@home');
+        }
+
+      }
+      else {
+        return back();
+      }
     }
 }

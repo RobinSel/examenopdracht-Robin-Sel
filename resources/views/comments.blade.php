@@ -25,10 +25,6 @@
   </div>
   <div class="contentCont">
     <div class="article">
-      <div class="rate">
-        <img src="images/icon-asc.png" alt=""><br>
-        <img src="images/icon-desc.png" alt="">
-      </div>
       <div class="articleInfo">
         <a href={{$article[0]->url}}>{{$article[0]->title}}</a>
         <div class="extraInfo">

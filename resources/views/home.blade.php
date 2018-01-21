@@ -10,8 +10,8 @@
       @foreach($articles as $article)
         <div class="article">
           <div class="rate">
-            <img src="images/icon-asc.png" alt=""><br>
-            <img src="images/icon-desc.png" alt="">
+            <a href="{{ route('rateUp', [$article->id]) }}"><img src="images/icon-asc.png" alt=""></a><br>
+            <a href="{{ route('rateDown', [$article->id]) }}"><img src="images/icon-desc.png" alt=""></a>
           </div>
           <div class="articleInfo">
             <a href={{$article->url}}>{{$article->title}}</a>

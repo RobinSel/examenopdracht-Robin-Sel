@@ -33,3 +33,6 @@ Route::get('comments/{id}/delete/sure', 'ArticleController@deleteSureArticle')->
 
 Route::get('comments/{id}/edit/{commentId}', 'ArticleController@editComment')->name('editComment');
 Route::patch('comments/{id}/update/{commentId}', 'ArticleController@updateComment')->name('updateComment');
+
+Route::get('home/{id}/rateUp', 'ArticleController@rateUp')->name('rateUp');
+Route::get('home/{id}/rateDown', 'ArticleController@rateDown')->name('rateDown');
