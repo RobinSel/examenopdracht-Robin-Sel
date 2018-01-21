@@ -73,7 +73,7 @@ class ArticleController extends Controller
 
       $articleToEdit = Article::where('id', $id)->update(['title' => $request->title, 'url' => $request->url]);
 
-      return back();
+      return redirect()->action('PagesController@home');
     }
 
 //----------------------------------------------------------------------------------------------------------------
@@ -106,7 +106,7 @@ class ArticleController extends Controller
 
       $commentToEdit = Comment::where('id', $comId)->update(['body' => $request->body]);
 
-      return back();
+      return redirect()->action('PagesController@comments', ['id' => $id]);
     }
 //----------------------------------------------------------------------------------------------------------------
     public function deleteComment ($id, $comId) {

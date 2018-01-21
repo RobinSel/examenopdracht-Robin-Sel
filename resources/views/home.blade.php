@@ -18,8 +18,11 @@
             <div class="extraInfo">
               <p>{{$article->points}} points</p>
               <p>Ceated by {{$article->name}}</p>
-              <p><a href="{{ route('comments', [$article->id]) }}">... Comments</a></p>
+              <p><a href="{{ route('comments', [$article->id]) }}">{{ $countComArray[$article->id] }} Comments</a></p>
+              @guest
+              @else
               <a href="{{ route('editArticle', [$article->id]) }}">Edit</a>
+              @endguest
             </div>
           </div>
         </div>
