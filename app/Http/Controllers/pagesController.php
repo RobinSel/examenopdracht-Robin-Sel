@@ -10,13 +10,19 @@ use DB;
 class PagesController extends Controller
 {
     public function home () {
+      if (\Auth::check()) {
+        $userId = \Auth::user()->id;
+      }
+      else {
+        $userId = 0;
+      }
+
         $articles = Article::join('users', 'users.id', '=', 'articles.user_id')->orderby('id', 'desc')->select('articles.*', 'users.name')->get();
 
         $articleHighestId = Article::orderby('id', 'desc')->select('articles.id')->first();
         $number = $articleHighestId->id;
 
         $countComArray = array();
-
         for ($a=1; $a <= $number ; $a++) {
           if (Article::where('id', $a)->exists()) {
             $c = Comment::where('comments.article_id', $a)->get();
@@ -26,7 +32,7 @@ class PagesController extends Controller
           }
         }
 
-        return view('home', compact('articles', 'countComArray'));
+        return view('home', compact('articles', 'userId', 'countComArray'));
     }
 
     public function intructies () {

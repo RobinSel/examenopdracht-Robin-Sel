@@ -19,10 +19,9 @@
               <p>{{$article->points}} points</p>
               <p>Ceated by {{$article->name}}</p>
               <p><a href="{{ route('comments', [$article->id]) }}">{{ $countComArray[$article->id] }} Comments</a></p>
-              @guest
-              @else
+              @if ($userId == ($articles[0]->user_id))
               <a href="{{ route('editArticle', [$article->id]) }}">Edit</a>
-              @endguest
+              @endif
             </div>
           </div>
         </div>
